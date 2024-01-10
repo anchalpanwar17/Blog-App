@@ -1,0 +1,46 @@
+<%- include("partials/head.ejs") %>
+</head>
+<body>
+<%- include("partials/header.ejs") %>
+
+<div class="container mt-4">
+    <h2><%= blog.title %></h2>
+    <img src="<%= blog.coverImageUrl %>" alt="coverImage" width="700px" height="500px">
+    <p style="font-size: 25px; white-space: pre-line;"><%= blog.body %></p>
+</div>
+<div class="container mt-4">
+    <img src="<%= blog.createdBy.profileImageUrl %>" alt="profile img" width="60px" /> 
+    <span style="font-size: larger; font-weight: bold;">by <%= blog.createdBy.name %></span>
+</div>
+
+<!-- comments -->
+
+<div class="container mt-3">
+    <h2>Comments(<%= comments.length %>)</h2>
+
+    <div class="mt-3">
+        <% comments.forEach(comment => {  %>
+        <div>
+            <img src="<%= comment.createdBy.profileImageUrl%>" alt="userProfile" width="50px">
+            <span style="font-weight: bolder;"><%= comment.createdBy.name %>: </span>
+            <p style="margin-left: 10px;"><%= comment.content %></p>
+        </div>
+        <% }) %>
+      </div>
+    
+    <% if(locals.user) { %>
+        
+    <form action="comment/<%= blog._id %>" method="post">
+        <div class="mb-3">
+            <input type="text" class="form-control" name="content" id="content" placeholder="Add your comment">   
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+      <% } %>
+</div>
+
+<%- include("partials/script.ejs") %>
+
+</body>
+</html>

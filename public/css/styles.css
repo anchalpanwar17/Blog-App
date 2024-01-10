@@ -3,11 +3,11 @@ html {
   position: relative;
 }
 
-.container-fluid {
+/* .container-fluid {
     padding-top: 70px;
     padding-bottom: 70px;
-}
-.navbar {
+} */
+/* .navbar {
     padding-top: 15px;
     padding-bottom: 15px;
     border: 0;
@@ -15,13 +15,21 @@ html {
     margin-bottom: 0;
     font-size: 12px;
     letter-spacing: 5px;
-}
-.navbar-nav  li a:hover {
+} */
+.navbar  li a:hover {
     color: #1abc9c !important;
 }
 
 .footer-padding {
 	padding-bottom: 60px;
+}
+
+.container-fluid{
+  font-size:xx-large;
+}
+
+.d-flex > ul{
+  padding-right: 15px;
 }
 
 .footer {

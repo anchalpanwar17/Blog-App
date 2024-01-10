@@ -1,24 +1,68 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-
-<head>
-  <meta charset="utf-8">
-  <title>Daily Journal</title>
-  <meta charset="utf-8">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/css/styles.css">
-  <nav class="navbar navbar-default">
-    <div class="container">
-      <div class="navbar-header">
-        <p class="navbar-brand">Blog App</p>
-      </div>
-        <ul class="nav navbar-nav navbar-right">
-          <li id="home"><a href="/">HOME</a></li>
-          <li id="about"><a href="/about">ABOUT US</a></li>
-          <li id="contact"><a href="/contact">CONTACT US</a></li>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Blog App</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="/">Home</a>
+        </li>
+        <!-- <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="navbarDropdown"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Dropdown
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><hr class="dropdown-divider" /></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li> -->
+      </ul>
+      <form class="d-flex">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 pr-3">
+          <% if(locals.user) {%>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#"
+              ><% {locals.user.name} %></a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="blog/add-new">Write</a>
+          </li>
         </ul>
+        <button class="btn btn-outline-success" type="submit"><a href="/user/logout">Log Out</a></button>
+        <% } else {%>
+          <button class="btn btn-outline-success" type="submit"><a href="/user/login">Log In</a></button>
+        <% } %>
+      </form>
     </div>
-  </nav>
-</head>
-  <body>
-    <div class="container">
+  </div>
+</nav>
+
+<% if(locals.error) {%>
+  <div class="container mt-4">
+  <div class="alert alert-danger" role="alert">
+    <%= locals.error %>
+  </div>
+</div>
+  <% } %>
+
+

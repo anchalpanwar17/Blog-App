@@ -1,0 +1,60 @@
+<%- include("partials/head.ejs") %>
+<!-- <link rel="stylesheet" href="/css/blog.css"> -->
+</head>
+<body>
+<%- include("partials/header.ejs") %>
+<div class="container pt-5">
+    <form action="/blog" method="post" enctype="multipart/form-data">
+      <div class="mb-3">
+        <label for="coverImage" class="form-label"><h4>Cover Image</h4></label>
+        <input type="file" name="coverImage" class="form-control" id="coverImage" aria-describedby="coverImage">
+      </div>
+        <div class="mb-3">
+          <label for="title" class="form-label"><h4>Title</h4></label>
+          <input type="text" name="title" class="form-control" id="title" aria-describedby="title" placeholder="Title">
+        </div>
+        <div class="mb-3">
+          <label for="body"><h4>Body</h4></label>
+          <textarea name="body" class="form-control" id="body" cols="30" rows="10" aria-describedby="body"></textarea>
+        </div>
+        <div class="category mb-3">
+          
+          <label for="Category"> <h4>Category</h4></label>
+          <div class="cat">
+          <input type="radio" name="cat" id="art" value="Art">
+          <label for="Art">Art</label>
+          </div>
+          <div class="cat">
+            <input type="radio" name="cat" id="science" value="Science">
+            <label for="Science">Science</label>
+          </div>
+          <div class="cat">
+            <input type="radio" name="cat" id="technology" value="Technology">
+            <label for="Technology">Technology</label>
+          </div>
+          <div class="cat">
+            <input type="radio" name="cat" id="cinema" value="Cinema">
+            <label for="Cinema">Cinema</label>
+          </div>
+          <div class="cat">
+            <input type="radio" name="cat" id="design" value="Design">
+            <label for="Design">Design</label>
+          </div>
+          <div class="cat">
+            <input type="radio" name="cat" id="food" value="Food">
+            <label for="Food">Food</label>
+          </div>
+          <div class="cat">
+            <input type="radio" name="cat" id="lifestyle" value="Lifestyle">
+            <label for="Lifestyle">Lifestyle</label>
+          </div>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">POST</button>
+      </form>
+</div>
+    
+<%- include('partials/script') %>
+
+</body>
+</html>

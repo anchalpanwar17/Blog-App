@@ -1,29 +1,46 @@
 <%- include("partials/head.ejs") %>
-<!-- <link rel="stylesheet" href="/css/styles.css"> -->
-</head>
-<body>
-<%- include("partials/header.ejs") -%>
-<div class="container  mt-3">
+  <!-- <link rel="stylesheet" href="/css/styles.css"> -->
+  </head>
 
-<% blogs.forEach(blog => { %>
-    <a href="/blog/<%= blog._id %>" style="text-decoration:none; color:black">
-    <div class="card mt-3">
-        <img src="<%= blog.coverImageUrl %>" class="card-img-top mx-auto d-block mt-2" alt="CoverImage" style="height: 250px; width: 500px;">
-        <div class="card-body">
-          <blockquote class="blockquote mb-0">
-            <h5 class="card-title"><%= blog.title %></h5>
-            <p class="card-text mt-0"><%= blog.body %></p> 
-            <footer class="blockquote-footer mt-2">by <cite title="Source Title"><%= blog.createdBy.name %></cite></footer>
-          </blockquote>
-        </div>
+  <body>
+    <%- include("partials/header.ejs") -%>
+      <div class="container  mt-3">
+
+        <% blogs.forEach(blog=> { %>
+          <a href="/blog/<%= blog._id %>" style="text-decoration:none; color:black">
+            <div class="card mt-3">
+
+              <%  if (blog.coverImageUrl && blog.coverImageUrl.trim() !=="" ) { %>
+
+                <img src="<%= blog.coverImageUrl %>" class="card-img-top mx-auto d-block mt-2" alt="CoverImage"
+                  style="height: 250px; width: 500px;">
+
+              <% } %>
+
+                <div class="card-body">
+                  <blockquote class="blockquote mb-0">
+                    <h5 class="card-title">
+                      <%= blog.title %>
+                    </h5>
+                    <p class="card-text mt-0">
+                      <%= blog.body %>
+                    </p>
+                    <footer class="blockquote-footer mt-2">
+                      by <cite title="Source Title">
+                        <%= blog.createdBy ? blog.createdBy.name : "Unknown" %>
+                      </cite>
+                    </footer>
+                  </blockquote>
+                </div>
+            </div>
+          </a>
+          <% }); %>
       </div>
-    </a>
-<% }); %>
-</div>
 
 
-<%- include("./partials/script") %>
+      <%- include("./partials/script") %>
 
 
-</body>
-</html>
+  </body>
+
+  </html>
